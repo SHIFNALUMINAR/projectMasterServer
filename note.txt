@@ -1,0 +1,175 @@
+Node
+-----
+
+
+
+- js runtime environment + js libraries   - Node Server
+- features of node server 
+                          - extremely faster
+                          - asynchronous programming
+                          - single threaded + event loop
+                          - highly scalable
+                          - open source
+
+- node js global objects  - it can access anywhere from node js without exporting / importing 
+                            ex:console.log(),setTimeout()...
+
+- node js module system   - Each file in node js app is considered as seperate module
+                            To reuse modules we have export and import 
+
+                          - import -require() - used to import js modules in node server                              
+                             require('module name') 
+                          - export - module.exports / exports
+                          - exports- 
+
+                            exports function funct1(){
+
+                            } 
+                            exports function funct2(){
+                                
+                            } 
+
+                         - module.exports
+
+                            function funct1(){
+
+                            } 
+                            function funct2(){
+                                    
+                            }
+
+                            module.exports={func1,func2}  //last in js module
+                        - inbuilt module 
+                            exc: fs - file system - handling file related events 
+                                 http - generating http requests
+                                 crypto - tool like encryption and hashing ...
+                                 process - used to process environmental varialbles
+                                           during running state 
+ - package in node js  - collection of modules 
+                       - package.json -handle packages in node, it 
+                                       contain npm configurations
+                       - install - npm i packageName
+                       - node modules - store copies of installed packages - npm i
+                       - package-lock.json - to holdversions of installes packages
+
+REST - http protocole with json type data
+SOAP - http protocole with xml type data                              
+
+
+Express
+-------
+ -framework of node , resolving clent sever requests
+ -server creation steps 
+   1- create a folder for server
+   2- create package.json - npm init -y
+   3- set up start command in script of package.json "start":"node index.json"
+   4- install express - npm i express
+   5- create main page  - index.js 
+   6- create gitignore and add node_modules 
+   7- import express then create server 
+   8- connect server with client - CORS (cross origin resource sharing)
+                                 - package used to connect client app with server 
+   9- use express.json() method to convert all incoming json data to js data
+   10- create environmental variable (.env) and install dotenv (package 
+       forloading .env in index.js)
+   11 - set a port to run server
+
+                        
+Environmental variables- variables that contain application configurations
+                         needed during run-time 
+                       - process module handling environmental variables
+                       - it can convert static working of app into dynamic
+                         (local host running to server running)
+
+
+MVC Architecture In Node 
+-------------------------
+
+
+
+Mongo DB - used to store large scale datas permanently
+-------------------------------------------------------
+
+
+- difference between sql and mongodb 
+
+            SQL                                      MongoDb
+-------------------------------           ------------------------------------
+- relational DBMS                           - Document oriented NoSQL DB
+- store in table with row and column        - collection of json documents 
+- uses fixed schema                         - uses dynamic schema 
+- used to optimise and complex join         - optimised for scalability and
+  and transaction                             performance
+- support rich set of data types            - limited set of data types
+- ACID(atomicity,consistancy,isolation      - CAP(consistancy,availability,
+  durability) property                        partition tolerence) property
+- uses in traditional business              - uses in bigdata and real time 
+  applications                                web applications
+
+
+
+- mongodb Commands
+--------------------
+
+-> show databases      - to display all databases in mdb
+-> use databaseName    - redierect to a perticular db
+-> show collections    - display all collections in a database
+-> find()              - to get all documents from a collection 
+-> find(condition)     - to get all documents which satisfy the condition from a collection
+-> findOne(condition)  - to get single document which satisfy the given condition else get null output
+-> limit(count)        - to limit documents while reading from db 
+-> sort({"key":1/-1})  - to sort documents based on any key  1(asc) and -1(desc)
+-> insertMany(array of objects) - insert multiple documents at same time 
+-> insertOne(object)   - insert single document at a time 
+-> Quering commands    
+      -$gt / gte / lt / lte 
+      -$or / and 
+      -$set 
+      -$inc(number) / inc(-number) -decrement
+      -$push (add) $pull (remove)
+      -$exists
+-> updateMany()       - to update morethan one documents at a time 
+-> updateOne()        - to update single document at a time 
+-> deleteOne(condition) - to remove single document from collection
+-> deleteMany(condition) - to remove multiple documents from collection
+
+->aggregate using lookup
+ 
+ {
+   $lookup:
+     {
+       from: <collection to join>,
+       localField: <field from the input documents>,
+       foreignField: <field from the documents of the "from" collection>,
+       as: <output array field>
+     }
+}
+
+db.users.aggregate({$lookup:{from:'projects',localField:'_id',foreignField:'uid',as:"userProjects"}})
+
+
+mongoose
+----------
+
+library used to connect mdb with node server 
+
+jsonwebtoken
+------------
+library in node js to implement autherization in server 
+- create a token for logined users 
+
+
+multer 
+-------
+library used to handle file type contents in node 
+
+
+middleware 
+------------
+middlewares can control the server requests before the logic
+function with three parameters - req,res,next
+
+    2 types 
+    -------
+    1- Application Specific Middleware 
+    2- Router Specific Middleware
